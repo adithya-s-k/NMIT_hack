@@ -197,7 +197,23 @@ def capture_frame():
             
     cap.release()
     cv2.destroyAllWindows()
-    
+    # /////////////////////////////////////////////////
+
+    cap = cv2.VideoCapture('./assets/Countdown5.mp4')
+    while(cap.isOpened()):
+    # Capture frame-by-frame
+        ret, res1 = cap.read()
+        if ret == True:
+            _,buffer=cv2.imencode(".jpg",res1)
+            res1=buffer.tobytes()
+            yield(b' --frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n'+res1+b'\r\n')
+        else: 
+            break
+    cap.release()
+    cv2.destroyAllWindows()
+        
+        
     # ////////////////////////////////////////////////
     cap = cv2.VideoCapture(0)
     cap.set(3,1280)
@@ -311,6 +327,21 @@ def capture_frame():
             if cv2.waitKey(10) & 0xFF == ord('q'):
                 break
             
+    cap.release()
+    cv2.destroyAllWindows()
+    
+    # //////////////////////////////////////////
+    cap = cv2.VideoCapture('./assets/Workout Completed.jpg')
+    while(cap.isOpened()):
+    # Capture frame-by-frame
+        ret, res1 = cap.read()
+        if ret == True:
+            _,buffer=cv2.imencode(".jpg",res1)
+            res1=buffer.tobytes()
+            yield(b' --frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n'+res1+b'\r\n')
+        else: 
+            break
     cap.release()
     cv2.destroyAllWindows()
 
