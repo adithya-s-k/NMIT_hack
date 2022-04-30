@@ -87,7 +87,7 @@ def calculate_angle(a,b,c):#shoulder, elbow, wrist
         angle = 360-angle    
     return angle
 
-def capture_frame():
+def fullbody():
     cap = cv2.VideoCapture(0)
     cap.set(3,1280)
     cap.set(4,700)
@@ -166,7 +166,7 @@ def capture_frame():
             cv2.putText(res, str(counter), (1280-220+10,65), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (255,255,255), 1, cv2.LINE_AA)
             # Stage data
             cv2.putText(res, 'STAGE', (1280-220+80,25), cv2.FONT_HERSHEY_COMPLEX_SMALL, 1, (255,255,255), 1, cv2.LINE_AA)
-            cv2.putText(res, stage, (1000-220+80,65), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (255,255,255), 1, cv2.LINE_AA)
+            cv2.putText(res, stage, (1280-220+80,65), cv2.FONT_HERSHEY_COMPLEX_SMALL, 2, (255,255,255), 1, cv2.LINE_AA)
             
             #for the instructor
             cv2.rectangle(res, (700,720-60), (1280,720), (0,0,0), -1)
@@ -363,7 +363,7 @@ def video():
         return render_template("please_login.html")
     else:
 
-        return Response(capture_frame(),mimetype='multipart/x-mixed-replace; boundary=frame')
+        return Response(fullbody(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 @app.route("/logout")
