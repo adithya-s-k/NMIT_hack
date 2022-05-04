@@ -12,14 +12,7 @@ mp_pose = mp.solutions.pose
 
 app=Flask(__name__)
 app.secret_key="9741709968"
-config={"apiKey": "AIzaSyC5tgAn81q6YrKfLJlLFO9c0bjfCEEy884",
-  "authDomain": "workout-b7013.firebaseapp.com",
-  "projectId": "workout-b7013",
-  "storageBucket": "workout-b7013.appspot.com",
-  "messagingSenderId": "909360379159",
-  "appId": "1:909360379159:web:029c4e01af8e2cbb4cf352",
-  "databaseURL":" ",
-  "measurementId": "G-GWRFFDF5BF"}
+config={<put in your config here>}
 firebase=pyrebase.initialize_app(config)
 
 auth=firebase.auth()
